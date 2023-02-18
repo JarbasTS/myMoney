@@ -35,7 +35,7 @@ export function TransactionsTable() {
             <td>29/01/2023</td>
           </tr>
           <tr>
-            <td className="title">Apostas esportivas</td>
+            <td className="title">Rinha de galo</td>
             <td className="deposit">R$13.000</td>
             <td>Investimentos</td>
             <td>13/02/2023</td>
