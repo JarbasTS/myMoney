@@ -8,11 +8,11 @@ interface Transaction {
   amount: number;
   type: string;
   category: string;
-  createdAt: Date;
+  createdAt: string;
 }
 
 export function TransactionsTable() {
-  const [transaction, setTransactions] = useState<Transaction[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
     api.get('transactions').then(response => setTransactions(response.data.transactions));
@@ -31,7 +31,7 @@ export function TransactionsTable() {
         </thead>
 
         <tbody>
-          {transaction.map(transaction => (
+          {transactions.map(transaction => (
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
               <td className={transaction.type}>
@@ -41,7 +41,7 @@ export function TransactionsTable() {
                 }).format(transaction.amount)}
               </td>
               <td>{transaction.category}</td>
-              <td>{new Intl.DateTimeFormat('pt-BR').format(transaction.createdAt)}</td>
+              <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(transaction.createdAt))}</td>
             </tr>
           ))}
         </tbody>
